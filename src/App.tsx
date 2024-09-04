@@ -1,24 +1,23 @@
 import "./App.css";
-import { Navbar } from "./navbar";
-import { CartContainer } from "./cartContainer";
-import { useGlobalContext } from "./context";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Home } from "./pages/home";
+import { About } from "./pages/About";
+import { SingleCockTail } from "./pages/singleCockTail";
+import { ErrorPage } from "./pages/error";
+import { Navbar } from "./compontent/navbar";
 
 const App = () => {
-  //
-  const context = useGlobalContext();
-  const { state } = context;
-  const { loading } = state;
-  //
-  if (loading)
-    return (
-      <div className="spinnerContainer">
-        <div className="spinner">Loading...</div>
-      </div>
-    );
   return (
     <main>
-      <Navbar />
-      <CartContainer />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/cocktail/:id" element={<SingleCockTail />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Router>
     </main>
   );
 };

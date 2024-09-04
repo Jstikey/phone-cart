@@ -34,7 +34,7 @@ Variables
   --clr-green-dark: hsl(125, 67%, 44%);
   --clr-green-light: hsl(125, 71%, 66%);
   --clr-black: #222;
-  --transition: all 0.3s linear;
+  --transition: all 0.2s linear;
   --spacing: 0.1rem;
   --radius: 0.25rem;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -125,117 +125,221 @@ body {
   width: 100vw;
 }
 
-nav {
+/* ============================================================
+NavBar
+=============================================================*/
+
+.navbar {
   width: 100vw;
+  border-bottom: 4px solid rgb(177, 62, 62);
+  padding: 1rem 2rem;
 }
 
 .nav-center {
-  background: rgb(115, 115, 211);
-  color: white;
   width: 100%;
   display: grid;
-  place-items: center;
-  grid-template-columns: 1fr 1fr;
-  padding: 0.7rem 2rem;
-  position: relative;
+  grid-template-columns: auto 1fr;
 }
 
-.nav-center svg {
-  width: 10%;
-  fill: white;
-}
-
-.amount {
-  position: absolute;
-  top: 0vh;
-  right: 43.5vw;
-  border-radius: 50%;
-  font-weight: bold;
-  width: 1rem;
-  height: 1rem;
-  text-align: center;
+.nav-links {
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 0.7rem;
-  background: rgb(122, 204, 236);
+  gap: 2rem;
+  font-weight: bold;
+  padding-left: 6rem;
 }
 
-@media screen and (min-width: 800px) {
-  .amount {
-    right: 34.5vw;
+.logo {
+  width: 10rem;
+}
+
+main {
+  display: grid;
+  place-items: center;
+}
+
+/*=============================================================== 
+About Page
+================================================================*/
+
+.section {
+  place-items: center;
+  display: grid;
+  width: 90vw;
+  margin-top: 2rem;
+}
+
+.section h1 {
+  font-size: 2.5rem;
+}
+
+.btn {
+  border: 1px solid rgba(45, 43, 43, 0.4);
+  padding: 0.3rem 0.6rem;
+  border-radius: 3px;
+}
+.btn-primary {
+  background: rgb(221, 61, 3);
+  color: wheat;
+}
+
+.btn-primary:hover {
+  background: orange;
+  color: white;
+}
+
+.error-container {
+  text-align: center;
+}
+
+.error-container h1 {
+  font-size: 2rem;
+}
+
+/*=========================================================== 
+      Form 
+===========================================================*/
+.search-form {
+  border: 1px solid rgba(113, 110, 110, 0.3);
+  border-radius: 3px;
+  width: 69vw;
+  height: 7rem;
+  display: grid;
+  place-items: center;
+  box-shadow: 3px 5px 8px rgba(113, 110, 110, 0.7);
+  margin-bottom: 3rem;
+}
+
+.search-form div {
+  width: 80%;
+}
+
+input,
+input:focus {
+  width: 100%;
+  height: 2rem;
+  border: 1px solid rgba(12, 12, 12, 0.2);
+  outline: none;
+  margin-top: 0.5rem;
+}
+
+/* ==============================================================
+LOADER
+================================================================= */
+
+.loader,
+.loader:before,
+.loader:after {
+  background: transparent;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+.loader {
+  color: var(--primaryColor);
+  text-indent: -9999em;
+  margin: 88px auto;
+  margin-top: 10rem;
+  position: relative;
+  font-size: 3rem;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: "";
+}
+.loader:before {
+  left: -1.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 1.5em;
+}
+@-webkit-keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+@keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
   }
 }
 
-.cart {
-  padding-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* ===================================================
+COCKTAIL SECTION
+===================================================== */
+.cock {
+  margin-top: 0.1rem;
+  border: 1px solid rgb(144, 138, 138);
+  padding: 0.5rem;
+  background: rgba(133, 252, 232, 0.752);
+  box-shadow: 3px 3px 3px black;
 }
-img {
-  width: 150px;
-  height: 200px;
-  margin-left: 3rem;
+
+.cock-image {
+  height: 11rem;
+  width: 100%;
   object-fit: cover;
 }
 
-.cart-item {
-  width: 90%;
+.cock:hover {
+  color: gray;
+}
+
+.cock-image:hover {
+  transform: scale(1.09);
+}
+.cocktail-section {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
-.item-info,
-.item-img {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.details {
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  background: red;
+  color: white;
 }
 
-.buttonUpDown {
-  flex-direction: column;
-  align-items: center;
-  display: flex;
+.cocktail-section p {
+  margin-top: -0.4rem;
 }
-
-.buttonUpDown button {
-  border: none;
-  font-size: 1.5rem;
-  color: rgb(77, 60, 60);
+/* =========================================================
+SINGLE COCK 
+============================================================ */
+.single-cocktail {
+  margin-top: 2rem;
 }
-
-footer {
-  width: 100%;
-  text-align: center;
+.singeCock-img {
+  width: 18em;
+  height: 20em;
+  object-fit: cover;
 }
-
-.spinner {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  border: 1px solid skyblue;
-  animation: spin 1s infinite linear;
-  display: grid;
-  border-left: 3px solid red;
-  border-right: 3px solid red;
-  place-items: center;
-}
-
-.spinnerContainer {
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  place-items: center;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.drink-info {
+  text-align: left;
 }
