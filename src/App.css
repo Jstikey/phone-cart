@@ -24,10 +24,11 @@ li {
 }
 
 body {
-  font-family: "Rubik", sans-serif !important;
-  background: var(--mainWhite) !important;
-  color: var(--mainDark) !important;
+  font-family: "Rubik", sans-serif;
+  background: var(--mainWhite);
+  color: var(--mainDark);
 }
+
 .text-title {
   font-family: "Nerko", cursive;
   letter-spacing: 0.3rem;
@@ -40,19 +41,19 @@ body {
   color: var(--lightBlue);
 }
 .navbar {
-  justify-content: flex-start !important;
+  justify-content: flex-start;
 }
 .btn-black {
   background: transparent;
   text-transform: capitalize;
-  font-size: 0.8rem !important;
+  font-size: 0.8rem;
   color: var(--mainBlack);
-  border-radius: 0 !important;
-  border: 0.1rem solid var(--mainDark) !important;
+  border-radius: 0;
+  border: 0.1rem solid var(--mainDark);
 }
 .btn-black:hover {
-  background: var(--mainDark) !important;
-  color: var(--mainWhite) !important;
+  background: var(--mainDark);
+  color: var(--mainWhite);
 }
 .cart-icon {
   cursor: pointer;
@@ -63,7 +64,6 @@ body {
 .container {
   display: grid;
   place-items: center;
-  width: 100vw;
   margin-top: 3rem;
 }
 
@@ -114,21 +114,26 @@ nav a {
 /* =========================================
  single phone
 =============================================*/
+
 .center-phones {
   display: grid;
+  padding: 2rem;
   gap: 1rem;
   margin-top: 2rem;
+  place-items: center;
+  max-width: 100vw;
+}
+
+@media screen and (min-width: 600px) {
+  .center-phones {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
 }
 
 @media screen and (min-width: 800px) {
   .center-phones {
     grid-template-columns: repeat(4, 1fr);
-  }
-}
-@media screen and (min-width: 500px) {
-  .center-phones {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
   }
 }
 .image-container a {
@@ -144,10 +149,9 @@ img {
 .image-container {
   display: grid;
   place-items: center;
-  width: 100%;
-  height: 100%;
   position: relative;
   overflow: hidden;
+  width: 80%;
 }
 
 .image-container button {
@@ -175,10 +179,8 @@ img {
 .phone-container {
   display: grid;
   place-items: center;
-  padding: 0.5rem;
-  width: 18rem;
+  padding: 1rem;
   border-radius: 5px;
-  height: 25rem;
 }
 
 .phone-container:hover {
@@ -207,7 +209,7 @@ DETAILS
 }
 
 .details-container h1 {
-  font-size: 2rem;
+  font-size: rem;
 }
 
 .details {
@@ -229,16 +231,238 @@ DETAILS
 .detail-infor {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   width: 100%;
+  margin-top: 2rem;
   height: 100%;
 }
+
+.detail-image {
+  align-items: flex-end;
+}
+
+.detail-infor {
+  align-items: center;
+  gap: 1rem;
+}
+
+.detail-price {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 60%;
+}
+
+.detail-para {
+  width: 60%;
+  text-align: left;
+}
+
+.detail-infor p {
+  color: var(--lightBlue);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.detail-infor h3 {
+  color: var(--mainBlue);
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.detail-infor h2 {
+  color: var(--mainDark);
+  font-size: 1.8rem;
+  text-transform: capitalize;
+}
+
+.detail-infor h5 {
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.detail-para {
+  gap: 1rem;
+  display: grid;
+}
+
+.detail-btn {
+  border: 1px solid rgb(157, 149, 149);
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  color: var(--lightBlue);
+}
+
+.detail-btn:hover {
+  background: var(--mainBlue);
+}
+
+#detail-btn {
+  padding: 0.9rem 1rem;
+  margin-left: 0.1rem;
+  color: var(--mainYellow);
+  border: 1px solid rgb(206, 206, 99);
+}
+
+#detail-btn:hover {
+  background: var(--mainYellow);
+  color: white;
+}
+
+.detail-link {
+  display: flex;
+  justify-content: left;
+  gap: 1rem;
+  margin-top: 1.5rem;
+
+  width: 60%;
+}
+
 @media screen and (min-width: 800px) {
   .details-container h1 {
     font-size: 3.5rem;
   }
   .details {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================
+MODAL PAGE
+=========================================== */
+.modal-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(13, 13, 13, 0.8);
+  display: grid;
+  place-items: center;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 9px;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.modal img {
+  width: 18rem;
+}
+
+/* =====================================================
+cart Table
+======================================================== */
+
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+tbody img {
+  width: 5rem;
+}
+
+table {
+  width: 100%;
+}
+
+table {
+  /* margin-top: 2rem; */
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid var(--lightBlue);
+  /* padding-top: 1rem; */
+}
+
+#article {
+  text-align: right;
+  margin-top: 0.5rem;
+  width: 10rem;
+  font-family: cursive;
+  align-self: center;
+  margin-right: 1rem;
+}
+
+#article * {
+  margin-top: 1rem;
+}
+
+th {
+  padding-bottom: 1rem;
+  color: var(--mainBlue);
+}
+
+table h2 span {
+  color: var(--mainBlue);
+}
+
+table h2 {
+  font-family: "Nerko";
+  font-size: 2rem;
+  letter-spacing: 0.7rem;
+}
+
+tbody {
+  font-weight: 500;
+  text-transform: capitalize;
+  color: var(--mainBlue);
+}
+
+.trash {
+  color: orangered;
+}
+
+.quantity button {
+  margin-left: 0.5rem;
+  text-align: center;
+  vertical-align: center;
+  width: 2rem;
+  height: 2rem;
+}
+
+.delete-btn {
+  border: 1px solid rgb(157, 149, 149);
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  color: white;
+  background: red;
+}
+
+thead {
+  display: none;
+}
+
+tbody tr {
+  display: block;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+tbody td {
+  display: block;
+  text-align: center;
+  padding: 10px;
+}
+
+@media screen and (min-width: 800px) {
+  thead {
+    display: table-header-group;
+  }
+
+  tbody tr {
+    display: table-row;
+    border-bottom: none;
+  }
+
+  tbody td {
+    display: table-cell;
   }
 }

@@ -15,12 +15,24 @@ export interface singleProductProps {
 export interface stateProps {
   storeData: singleProductProps[];
   details: singleProductProps | undefined;
+  cart: singleProductProps[];
+  isModal: boolean;
+  modalProduct: singleProductProps | undefined;
+  sumTotal: number;
+  quantity: number;
 }
 
 interface contextProps {
   state: stateProps;
   handleDetail: (id: number) => void;
-  addToCart: () => void;
+  addToCart: (id: number) => void;
+  openProduct: (id: number) => void;
+  closeModal: () => void;
+  decrease: (id: number) => void;
+  increase: (id: number) => void;
+  remove: (id: number) => void;
+  clearCart: () => void;
+  setSingleTotal: (id: number) => void;
 }
 export interface GlobalContextProps {
   children: ReactNode;

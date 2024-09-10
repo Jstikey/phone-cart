@@ -1,4 +1,5 @@
 import { useGlobalContext } from "../contextFolder/context";
+
 import { Product } from "./Product";
 
 export const ProductList = () => {
