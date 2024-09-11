@@ -11,6 +11,8 @@ const initialState: stateProps = {
   modalProduct: detailProduct,
   sumTotal: 0,
   quantity: 0,
+  tax: 1,
+  gross: 0,
 };
 
 export const useGlobalContext = () => {
@@ -43,6 +45,7 @@ export const GlobalContext: FC<GlobalContextProps> = ({ children }) => {
 
       dispatch({ type: "ADDTOCART", product: product });
     }
+    dispatch({ type: "SINGLE_TOTAL", id: id });
   };
 
   // OPEN MODAL
@@ -58,35 +61,27 @@ export const GlobalContext: FC<GlobalContextProps> = ({ children }) => {
     openModal();
     const modalProd = state.storeData.find((product) => product.id === id);
     if (modalProd) dispatch({ type: "MODALPRODUCT", modalProd: modalProd });
-    if (state.isModal) {
-      const body = document.querySelector("body");
-      if (body) {
-        body.style.background = "red";
-      }
-    }
   };
 
   const increase = (id: number) => {
     dispatch({ type: "INCREASE", id: id });
-    setSingleTotal(id);
+    dispatch({ type: "SINGLE_TOTAL", id: id });
   };
 
   const decrease = (id: number) => {
     dispatch({ type: "DECREASE", id: id });
-    setSingleTotal(id);
+    dispatch({ type: "SINGLE_TOTAL", id: id });
   };
 
   const remove = (id: number) => {
     dispatch({ type: "REMOVE", id: id });
+    dispatch({ type: "SINGLE_TOTAL", id: id });
   };
 
   const clearCart = () => {
     dispatch({ type: "CLEAR" });
   };
 
-  const setSingleTotal = (id: number) => {
-    dispatch({ type: "SINGLE_TOTAL", id: id });
-  };
   return (
     <globalContext.Provider
       value={{
@@ -99,7 +94,6 @@ export const GlobalContext: FC<GlobalContextProps> = ({ children }) => {
         decrease,
         remove,
         clearCart,
-        setSingleTotal,
       }}
     >
       {children}

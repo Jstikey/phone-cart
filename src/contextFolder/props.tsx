@@ -20,6 +20,8 @@ export interface stateProps {
   modalProduct: singleProductProps | undefined;
   sumTotal: number;
   quantity: number;
+  tax: number;
+  gross: number;
 }
 
 interface contextProps {
@@ -32,7 +34,6 @@ interface contextProps {
   increase: (id: number) => void;
   remove: (id: number) => void;
   clearCart: () => void;
-  setSingleTotal: (id: number) => void;
 }
 export interface GlobalContextProps {
   children: ReactNode;

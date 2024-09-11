@@ -5,7 +5,7 @@ import { Table } from "./table";
 export const Cart = () => {
   const context = useGlobalContext();
   const { state, clearCart } = context;
-  const { cart } = state;
+  const { cart, sumTotal, quantity, tax, gross } = state;
 
   return (
     <div style={{ textAlign: "center", marginTop: "3rem" }}>
@@ -41,9 +41,10 @@ export const Cart = () => {
                 clear cart
               </button>
             </NavLink>
-            <h4>subtotal: ${1}</h4>
-            <h4>tax: ${1}</h4>
-            <h4>total: ${35.2}</h4>
+            <h4>subtotal: ${sumTotal}</h4>
+            <h4>total quantity{quantity}</h4>
+            <h4>tax: ${tax}</h4>
+            <h4>total: ${gross}</h4>
           </article>
         </div>
       )}

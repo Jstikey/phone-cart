@@ -11,6 +11,18 @@ type Action =
   | { type: "ADDTOCART"; product: singleProductProps }
   | { type: "SINGLE_TOTAL"; id: number }
   | { type: "CLEAR" };
+
+export const calculateTotal = (cart: singleProductProps[]) => {
+  return cart.reduce(
+    (acc, item) => {
+      acc.sumQuantity += item.count;
+      acc.sumTotal += item.count * item.price;
+      acc.tax += ((item.price * 2) / 100) * item.count;
+      return acc;
+    },
+    { sumTotal: 0, sumQuantity: 0, tax: 0 }
+  );
+};
 export const reducer = (state: stateProps, action: Action) => {
   switch (action.type) {
     case "SHOWDETAILS":
@@ -22,7 +34,12 @@ export const reducer = (state: stateProps, action: Action) => {
         details: selectedItem,
       };
     case "ADDTOCART":
-      return { ...state, cart: [...state.cart, action.product] };
+      const upDatedCart = [...state.cart, action.product];
+      return {
+        ...state,
+
+        cart: upDatedCart,
+      };
     case "OPENMODAL":
       return { ...state, isModal: true };
     case "CLOSEMODAL":
@@ -50,6 +67,7 @@ export const reducer = (state: stateProps, action: Action) => {
       return {
         ...state,
         storeData: updataeStoreData,
+
         cart: upDateCart,
       };
     case "REMOVE":
@@ -69,13 +87,25 @@ export const reducer = (state: stateProps, action: Action) => {
         cart: [],
       };
     case "SINGLE_TOTAL":
+      const upDatedCarts = state.cart.map((item) =>
+        item.id === action.id
+          ? { ...item, total: item.price * item.count }
+          : item
+      );
+
+      let {
+        sumTotal: increasedSumTotal,
+        sumQuantity: increasedQuantity,
+        tax,
+      } = calculateTotal(upDatedCarts);
+
       return {
         ...state,
-        cart: state.cart.map((item) =>
-          item.id === action.id
-            ? { ...item, total: item.price * item.count }
-            : item
-        ),
+        sumTotal: increasedSumTotal,
+        quantity: increasedQuantity,
+        tax: tax,
+        gross: tax + increasedSumTotal,
+        cart: upDatedCarts,
       };
     default:
       return state;

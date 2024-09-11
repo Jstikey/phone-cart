@@ -9,7 +9,7 @@ export const Details = () => {
   // const { img, id, info } = details
 
   return (
-    <section className="details-container">
+    <section className="details-container container">
       <h1>{title}</h1>
       <div className="details">
         <div className="detail-image">
