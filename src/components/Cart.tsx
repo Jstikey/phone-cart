@@ -1,11 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { useGlobalContext } from "../contextFolder/context";
 import { Table } from "./table";
+import { useState } from "react";
+import { PaypalModal } from "../contextFolder/paypal";
 
 export const Cart = () => {
   const context = useGlobalContext();
   const { state, clearCart } = context;
   const { cart, sumTotal, quantity, tax, gross } = state;
+  const [checkout, setCheckout] = useState(false);
 
   return (
     <div style={{ textAlign: "center", marginTop: "3rem" }}>
@@ -45,9 +48,13 @@ export const Cart = () => {
             <h4>total quantity{quantity}</h4>
             <h4>tax: ${tax}</h4>
             <h4>total: ${gross}</h4>
+            <button className="delete-btn" onClick={() => setCheckout(true)}>
+              checkout
+            </button>
           </article>
         </div>
       )}
+      {checkout && <PaypalModal />}
     </div>
   );
 };

@@ -498,3 +498,29 @@ tbody td {
     display: table-cell;
   }
 }
+
+/* 
+PAYPAL MODAL
+*/
+
+.paypalModal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.paypalcontainer {
+ background: white;
+  width: 20rem;
+  height: 25rem;
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+/*https://github.com/Jstikey/phone-cart
